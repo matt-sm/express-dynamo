@@ -1,6 +1,7 @@
 var express = require('express'),
 mongoose = require('mongoose'),
 fs = require('fs');
+var bodyParser = require('body-parser');
 
 var mongoUri = 'mongodb://localhost:27017/noderest';
 mongoose.connect(mongoUri);
@@ -11,9 +12,7 @@ db.on('error', function () {
 
 var app = express();
 
-app.configure(function(){
-  app.use(express.bodyParser());
-});
+app.use(bodyParser.json());
 
 require('./models/tag');
 require('./routes')(app);
