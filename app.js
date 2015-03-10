@@ -1,7 +1,6 @@
 var express = require('express'),
 mongoose = require('mongoose'),
-fs = require('fs');
-var bodyParser = require('body-parser');
+bodyParser = require('body-parser');
 
 var mongoUri = 'mongodb://localhost:27017/noderest';
 mongoose.connect(mongoUri);

@@ -30,23 +30,4 @@ exports.add = function(req, res) {
     if (err) return console.log(err); 
     return res.send(Tag);
   });
-}
-
-exports.delete = function(req, res){
-  var id = req.params.id;
-  Tag.remove({'_id':id},function(result) {
-    return res.send(result);
-  });
-};
-
-exports.import = function(req, res){
-  Tag.create( 
-    { "name": "Tag1" },
-    { "name": "Tag2" },
-    { "name": "Tag3" },
-    { "name": "Tag4" }
-  , function (err) {
-    if (err) return console.log(err); 
-    return res.send(202);
-  });
 };
