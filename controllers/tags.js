@@ -1,5 +1,8 @@
+var mongoose = require('mongoose'),
+Tag = mongoose.model('Tag');
 
 exports.findAll = function(req, res){
-	var results = [{"name" : "Tag1"}, {"name" : "Tag2"}];
-	res.send(results);
+	Tag.find({},function(err, results) {
+		return res.send(results);
+  });
 };
