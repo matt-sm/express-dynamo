@@ -1,38 +1,20 @@
 var proxyquire = require('proxyquire'),
+    sinon = require("sinon"),
     chai = require("chai"),
-    sinonChai = require("sinon-chai"),
     expect = chai.expect,
-    tags;
-
-chai.use(sinonChai);
+    tags = require("../controllers/tags");
 
 describe('The tags controller', function () {
-    var mongooseStub,
-        testTags = [{"Name": "Tag1"}, {"Name": "Tag2"}];
-
-    before(function () {
-        mongooseStub = {
-            model: function () {
-                return {
-                    find: function (query, callback) {
-                        callback(null, testTags);
-                    }
-                };
-            }
-        };
-
-        tags = proxyquire('../controllers/tags.js', {mongoose: mongooseStub});
-    })
-
     it('should return all tags', function (done) {
-        var req = {};
+		var req,res,spy,results;
 
-        var res = {
-            send: function (results) {
-                expect(results).to.eq(testTags);
-            }
-        };
+        req = res = {};
+        spy = res.send = sinon.spy();
+		results = [{"name" : "Tag1"}, {"name" : "Tag2"}];
 
         tags.findAll(req, res, done());
+
+        expect(spy.calledOnce).to.equal(true);
+		expect(spy.calledWith(results)).to.equal(true);
     })
 })
