@@ -7,9 +7,12 @@
     "start": "node app.js"
   },
   "dependencies": {
+    "aws-sdk": "^2.1.17",
+    "body-parser": "1.x",
+    "dynamodb-doc": "^1.0.0",
     "express": "3.x",
-    "mongoose": "3.8.x",
-    "body-parser": "1.x"
+    "joi": "^6.0.8",
+    "node-uuid": "^1.4.3"
   },
   "devDependencies": {
     "chai": "^2.1.1",
