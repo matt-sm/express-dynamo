@@ -1,5 +1,8 @@
 var express = require('express'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    AWS = require("aws-sdk");
+
+AWS.config.loadFromPath('config.json');
 
 var app = express();
 app.use(bodyParser.json());
